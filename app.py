@@ -247,7 +247,9 @@ def show_chat_interface(title, history_key, endpoint, payload_key):
                     # Extract fields
                     summary = report_result.get("summary", "No summary available")
                     score = report_result.get("score", "N/A")
-                    agents_report = report_result.get("report", {}).get("report", [])
+                    
+                    # 'report' is a list of agents, not a nested dict
+                    agents_report = report_result.get("report", [])
                     
                     # Display Summary & Score
                     st.info(f"**Summary:** {summary}")
